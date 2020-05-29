@@ -1,0 +1,16 @@
+{
+  "name": "testHTML",
+  "2D": false,
+  "3D": true,
+  "platform": "HTML3D",
+  "version": "2.16",
+  "wabVersion": "2.16",
+  "author": "Rasmus Johansson",
+  "description": "This is the custom widget",
+  "copyright": "",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "properties": {
+		"inPanel":true,
+    "hasStyle":true
+  }
+}

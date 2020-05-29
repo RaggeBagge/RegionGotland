@@ -1,0 +1,29 @@
+﻿<div>
+    <div class="menu">
+        <div class="menu-item">
+          <div class="slidecontainer">
+              <p>How many floors should the building have?
+              <input type="range" min="1" max="20" value="10" class="slider" id="myBuildingHeight"
+                onchange="showBuildingHeight()">
+              <p>Value: <span id="textBuildingHeight"></span></p>
+              </p>
+            <p>
+                <p>Which floor?</p>
+                <select class="dropdown" id="dropdownFloorLevel"></select>
+
+                <p>How high ceiling? (meters)</p>
+                <select class="dropdown" id="dropdownCeilingHeight"
+                onchange=""></select>
+            </p>
+          </div>
+          <button
+            id="createBuilding" onclick="mathAndDraw()">
+            Create Building</button>
+            <p>
+                <span id="showFloorHeights">
+                </span>
+            </p>
+        </div>
+    </div>
+  </div>
+

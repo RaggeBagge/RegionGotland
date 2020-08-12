@@ -1,14 +1,25 @@
-﻿//import PolygonSymbol3D from "esri/symbols/PolygonSymbol3D";
+﻿/*
+  Author: Rasmus Johansson, Uppsala Universitet
+  E-Mail: rasmus.johansson.1582@student.uu.se
+  Description: Give ability to create buildings in Web AppBuilder in ArcGIS Online.
+  Date: 2020-05-29
+  Version: 0.6
+*/
 
-//Global variables
+
+//import PolygonSymbol3D from "esri/symbols/PolygonSymbol3D";
+
+//--------------------
+//  Global variables
+//--------------------
+
 var ar = [];
 var sliderValue = 10;
-var heights = [2.80, 3.20, 3.50, 4, 5];
+var heights = [2.80, 3, 3.5, 4, 4.5, 5];
 const BUILDING_COLOR = "#FFFFFF";
 
-
 //Start of the program
-//window.addEventListener('load', main);
+window.addEventListener('load', main);
 
 //main();
 
@@ -20,9 +31,14 @@ function main() {
     changeStoreyHeightArray();
 }
 
+//-----------------
+//    Functions
+//-----------------
 
-//Functions
-
+/*
+  Updates the value that the slider has activily as you change the slider.
+  Updates the value of global variable sliderValue.
+*/
 function showBuildingHeight() {
     let slider = document.getElementById("myBuildingHeight");
     let output = document.getElementById("textBuildingHeight");
@@ -40,6 +56,11 @@ function showBuildingHeight() {
       fillBuildingDropdown();
     }
   }
+
+/*
+  Removes any options first from the first dropdown menu, then
+  creates the options of the first dropdown which tells which floor you want to change.
+*/
 
   function fillBuildingDropdown() {
     let select = document.getElementById("dropdownFloorLevel");
@@ -60,9 +81,13 @@ function showBuildingHeight() {
     }
   }
 
+/*
+  Adds options for the heights that a floor can be. If one is changed it calls the
+  changeStoreyHeightArray with the new value to be changed in the global array.
+*/
+
   function fillFloorHeightDropdown()
   {
-
     let dropdown = document.getElementById("dropdownCeilingHeight");
 
     if(dropdown != null)
@@ -81,6 +106,9 @@ function showBuildingHeight() {
     }
   }
 
+/*
+  A function to remove all the previous options to clear the dropdown menu.
+*/
   function removeOptions() {
     let selectElement = document.getElementById("dropdownFloorLevel");
     var L = selectElement.options.length - 1;
@@ -90,6 +118,9 @@ function showBuildingHeight() {
     }
  }
 
+/*
+  Displays the current array and values of it to let the user see what height each floor will be.
+*/
  function showFloorHeights()
  {
    let text = document.getElementById("showFloorHeights");
@@ -101,6 +132,9 @@ function showBuildingHeight() {
    }
  }
 
+/*
+  Fills the global array of the standard value of 2.8 meters in height for each floor.
+*/
   function fillStoreyArray()
   {
       for(i = 0;i<20;i++)
@@ -109,12 +143,18 @@ function showBuildingHeight() {
       }
   }
 
+/*
+  Function that changes the value in the array from the input parameters.
+*/
   function changeStoreyHeightArray(arrIndex, value)
   {
       ar[arrIndex] = value;
       showFloorHeights();
   }
 
+/*
+  Function to calculate the total height of the building and calls the draw function.
+*/
   function mathAndDraw()
   {
     var totalheight = 0;
@@ -126,6 +166,10 @@ function showBuildingHeight() {
     startDrawing(totalheight);
   }
 
+/*
+  Function from Esri where you create a Polygon 3D symbol to act as a building with the
+  height decided by the user.
+*/
   function startDrawing(size) {
     const color = BUILDING_COLOR;
 
@@ -143,8 +187,8 @@ function showBuildingHeight() {
       }],
     });
     this.createPolygonGraphic(symbol, color).always(() => {
-      this.stories = 0;
+      //this.stories = 0;
     });
-    this.stories = methodStories;
+    //this.stories = methodStories;
   }
 
